@@ -1,0 +1,401 @@
+{
+  "id": "39372338-2fba-4883-85d4-46960e326dfb",
+  "revision": 0,
+  "last_node_id": 7,
+  "last_link_id": 16,
+  "nodes": [
+    {
+      "id": 7,
+      "type": "SaveImage",
+      "pos": [
+        1700,
+        250
+      ],
+      "size": [
+        400,
+        270
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 16
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "EmptyLatentImage",
+      "pos": [
+        500,
+        520
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            13
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        512,
+        512,
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "type": "VAEDecode",
+      "pos": [
+        1440,
+        250
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 14
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 5,
+      "type": "KSampler",
+      "pos": [
+        970,
+        200
+      ],
+      "size": [
+        420,
+        262
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 10
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 11
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 12
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        291194128237493,
+        "randomize",
+        30,
+        7,
+        "dpmpp_2m",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [
+        500,
+        280
+      ],
+      "size": [
+        422,
+        186
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "blurry, low quality, cartoon, painting, illustration, anime, sketch, watermark, text, ugly, deformed, oversaturated, bad anatomy, extra fingers, fused fingers, mutation, bad proportions, cropped, worst quality, jpeg artifacts, out of frame"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        100,
+        100
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            10
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            8,
+            9
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "RealVisXL_V5.0_Lightning_fp16.safetensors"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "CLIPTextEncode",
+      "pos": [
+        500,
+        50
+      ],
+      "size": [
+        422,
+        186
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "(masterpiece, best quality:1.2), ultra detailed, 8k, photorealistic, cinematic lighting, soft shadows, warm atmosphere, cozy mood\n1girl, solo, beautiful face, captivating green eyes, full red lips, long dark hair, wearing a cozy sweater, sitting in an old library, reading a book, surrounded by bookshelves, soft sunlight streaming through a window, dust particles in the air, comfortable armchair, elegant, intellectual, calm, focused, peaceful expression"
+      ]
+    }
+  ],
+  "links": [
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      8,
+      1,
+      1,
+      2,
+      0,
+      "CLIP"
+    ],
+    [
+      9,
+      1,
+      1,
+      3,
+      0,
+      "CLIP"
+    ],
+    [
+      10,
+      1,
+      0,
+      5,
+      0,
+      "MODEL"
+    ],
+    [
+      11,
+      2,
+      0,
+      5,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      12,
+      3,
+      0,
+      5,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      13,
+      4,
+      0,
+      5,
+      3,
+      "LATENT"
+    ],
+    [
+      14,
+      5,
+      0,
+      6,
+      0,
+      "LATENT"
+    ],
+    [
+      15,
+      1,
+      2,
+      6,
+      1,
+      "VAE"
+    ],
+    [
+      16,
+      6,
+      0,
+      7,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "workflowRendererVersion": "LG",
+    "ds": {
+      "scale": 0.6830134553650705,
+      "offset": [
+        61.57682986284334,
+        191.39041483437413
+      ]
+    },
+    "frontendVersion": "1.41.16",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
