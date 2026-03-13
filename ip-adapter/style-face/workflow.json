@@ -1,0 +1,894 @@
+{
+  "id": "5e29c74f-9735-4ade-b8e7-0fa7aeb27c80",
+  "revision": 0,
+  "last_node_id": 17,
+  "last_link_id": 63,
+  "nodes": [
+    {
+      "id": 14,
+      "type": "SaveImage",
+      "pos": [
+        2990,
+        300
+      ],
+      "size": [
+        400,
+        270
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 45
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4"
+      },
+      "widgets_values": [
+        "ipadapter_output"
+      ]
+    },
+    {
+      "id": 13,
+      "type": "VAEDecode",
+      "pos": [
+        2730,
+        300
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 43
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 44
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            45
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [
+        453.97898340957227,
+        525.9683612751642
+      ],
+      "size": [
+        422,
+        186
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 22
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            41
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "blurry, low quality, cartoon, painting, illustration, anime, sketch, (worst quality:1.4), (low quality:1.4), ugly, deformed, **bad anatomy**, extra fingers, fused fingers, mutation, bad proportions, cropped, worst quality, jpeg artifacts, out of frame, duplicate, morbid, mutated, distorted, bad hands, missing fingers, extra limbs, malformed limbs, watermark, text, signature"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "IPAdapterCombineEmbeds",
+      "pos": [
+        1540,
+        161.73084828033694
+      ],
+      "size": [
+        315,
+        150
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "embed1",
+          "type": "EMBEDS",
+          "link": 30
+        },
+        {
+          "name": "embed2",
+          "shape": 7,
+          "type": "EMBEDS",
+          "link": 38
+        },
+        {
+          "name": "embed3",
+          "shape": 7,
+          "type": "EMBEDS",
+          "link": null
+        },
+        {
+          "name": "embed4",
+          "shape": 7,
+          "type": "EMBEDS",
+          "link": null
+        },
+        {
+          "name": "embed5",
+          "shape": 7,
+          "type": "EMBEDS",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "EMBEDS",
+          "type": "EMBEDS",
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "IPAdapterCombineEmbeds"
+      },
+      "widgets_values": [
+        "average"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "CLIPTextEncode",
+      "pos": [
+        450,
+        300
+      ],
+      "size": [
+        422,
+        186
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 21
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            40
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "portrait of a woman, medium shot, head and shoulders, detailed face, natural skin texture, soft studio lighting, sharp focus on eyes, photorealistic, 8k"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "LoadImage",
+      "pos": [
+        459.3107407320345,
+        -35.979812803551845
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            58
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "Снимок экрана 2026-03-12 075446.png",
+        "image"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "LoadImage",
+      "pos": [
+        784.0840590027323,
+        728.5036592755616
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            57,
+            61
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "Снимок экрана 2026-03-12 025119.png",
+        "image"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        50,
+        50
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            23
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            21,
+            22
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            44,
+            62
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "RealVisXL_V5.0_Lightning_fp16.safetensors"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "VAEEncode",
+      "pos": [
+        1671.2248188351443,
+        576.9981446845305
+      ],
+      "size": [
+        160.787109375,
+        46
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 61
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 62
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            63
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "VAEEncode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 9,
+      "type": "IPAdapterEncoder",
+      "pos": [
+        1180,
+        400
+      ],
+      "size": [
+        315,
+        150
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "link": 46
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 57
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "name": "clip_vision",
+          "shape": 7,
+          "type": "CLIP_VISION",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "pos_embed",
+          "type": "EMBEDS",
+          "links": [
+            38
+          ]
+        },
+        {
+          "name": "neg_embed",
+          "type": "EMBEDS",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "IPAdapterEncoder"
+      },
+      "widgets_values": [
+        0.8
+      ]
+    },
+    {
+      "id": 8,
+      "type": "IPAdapterEncoder",
+      "pos": [
+        1180,
+        200
+      ],
+      "size": [
+        315,
+        150
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "link": 24
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 58
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "name": "clip_vision",
+          "shape": 7,
+          "type": "CLIP_VISION",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "pos_embed",
+          "type": "EMBEDS",
+          "links": [
+            30
+          ]
+        },
+        {
+          "name": "neg_embed",
+          "type": "EMBEDS",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "IPAdapterEncoder"
+      },
+      "widgets_values": [
+        1.2
+      ]
+    },
+    {
+      "id": 7,
+      "type": "IPAdapterUnifiedLoader",
+      "pos": [
+        832.0363788988146,
+        -36.66194873327797
+      ],
+      "size": [
+        315,
+        290
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 23
+        },
+        {
+          "name": "ipadapter",
+          "shape": 7,
+          "type": "IPADAPTER",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            34
+          ]
+        },
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "links": [
+            24,
+            46,
+            47
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "IPAdapterUnifiedLoader"
+      },
+      "widgets_values": [
+        "PLUS (high strength)"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "IPAdapterEmbeds",
+      "pos": [
+        1900,
+        250
+      ],
+      "size": [
+        315,
+        254
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 34
+        },
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "link": 47
+        },
+        {
+          "name": "pos_embed",
+          "type": "EMBEDS",
+          "link": 35
+        },
+        {
+          "name": "neg_embed",
+          "shape": 7,
+          "type": "EMBEDS",
+          "link": null
+        },
+        {
+          "name": "attn_mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "name": "clip_vision",
+          "shape": 7,
+          "type": "CLIP_VISION",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            39
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "IPAdapterEmbeds"
+      },
+      "widgets_values": [
+        1.3,
+        "strong style transfer",
+        0,
+        1,
+        "K+V"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "KSampler",
+      "pos": [
+        2260,
+        250
+      ],
+      "size": [
+        420,
+        262
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 39
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 40
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 41
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 63
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            43
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.4",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        356988326714625,
+        "randomize",
+        26,
+        3.5,
+        "dpmpp_2m",
+        "karras",
+        0.45
+      ]
+    }
+  ],
+  "links": [
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      21,
+      1,
+      1,
+      2,
+      0,
+      "CLIP"
+    ],
+    [
+      22,
+      1,
+      1,
+      3,
+      0,
+      "CLIP"
+    ],
+    [
+      23,
+      1,
+      0,
+      7,
+      0,
+      "MODEL"
+    ],
+    [
+      24,
+      7,
+      1,
+      8,
+      0,
+      "IPADAPTER"
+    ],
+    [
+      30,
+      8,
+      0,
+      10,
+      0,
+      "EMBEDS"
+    ],
+    [
+      34,
+      7,
+      0,
+      11,
+      0,
+      "MODEL"
+    ],
+    [
+      35,
+      10,
+      0,
+      11,
+      2,
+      "EMBEDS"
+    ],
+    [
+      38,
+      9,
+      0,
+      10,
+      1,
+      "EMBEDS"
+    ],
+    [
+      39,
+      11,
+      0,
+      12,
+      0,
+      "MODEL"
+    ],
+    [
+      40,
+      2,
+      0,
+      12,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      41,
+      3,
+      0,
+      12,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      43,
+      12,
+      0,
+      13,
+      0,
+      "LATENT"
+    ],
+    [
+      44,
+      1,
+      2,
+      13,
+      1,
+      "VAE"
+    ],
+    [
+      45,
+      13,
+      0,
+      14,
+      0,
+      "IMAGE"
+    ],
+    [
+      46,
+      7,
+      1,
+      9,
+      0,
+      "IPADAPTER"
+    ],
+    [
+      47,
+      7,
+      1,
+      11,
+      1,
+      "IPADAPTER"
+    ],
+    [
+      57,
+      5,
+      0,
+      9,
+      1,
+      "IMAGE"
+    ],
+    [
+      58,
+      6,
+      0,
+      8,
+      1,
+      "IMAGE"
+    ],
+    [
+      61,
+      5,
+      0,
+      17,
+      0,
+      "IMAGE"
+    ],
+    [
+      62,
+      1,
+      2,
+      17,
+      1,
+      "VAE"
+    ],
+    [
+      63,
+      17,
+      0,
+      12,
+      3,
+      "LATENT"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "workflowRendererVersion": "LG",
+    "ds": {
+      "scale": 0.664651725178572,
+      "offset": [
+        -984.9012351032702,
+        51.06989340353588
+      ]
+    },
+    "frontendVersion": "1.41.16",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
